@@ -29,17 +29,11 @@ int main()
     if (day == "Sa" || day == "Su")
     {
         callRate = minutes * .15;
-    } else if (day == "Mo" || day == "Tu" || day == "We" || day == "Th" || day == "Fr")
-    {
-        if (hour >= 8 && hour <= 18)
+    } else if ((hour < 8 || hour > 18) || (hour == 18 && minutes == 0))
         {
             callRate = minutes * .40;
-        } else if (hour < 8 || hour > 18)
-        {
-            callRate = minutes * .25;
         } else
-            return 0;
-    }
+            callRate = minutes * .25;
 
     cout << "The cost of the call is " << callRate << endl;
 
